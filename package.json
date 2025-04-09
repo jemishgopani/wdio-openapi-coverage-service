@@ -1,6 +1,6 @@
 {
   "name": "wdio-openapi-service",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "WebdriverIO service for OpenAPI coverage tracking",
   "type": "module",
   "main": "build/index.js",
