@@ -73,6 +73,13 @@ export function saveHitEndpoints(
   _workerId: string
 ): void {
   try {
+    // Ensure directory exists
+    const directory = path.dirname(filePath);
+    if (!fs.existsSync(directory)) {
+      fs.mkdirSync(directory, { recursive: true });
+      log.info(`Created directory for endpoints: ${directory}`);
+    }
+
     // Deduplicate endpoints before saving - create a new set to avoid modifying the original
     const dedupedEndpoints = new Set<string>();
 
@@ -197,6 +204,13 @@ export function saveErrors(
   _workerId: string
 ): void {
   try {
+    // Ensure directory exists
+    const directory = path.dirname(filePath);
+    if (!fs.existsSync(directory)) {
+      fs.mkdirSync(directory, { recursive: true });
+      log.info(`Created directory for errors: ${directory}`);
+    }
+
     // Deduplicate errors by preferring template versions
     const dedupedErrors: Record<string, IServerErrorRecord> = {};
 

@@ -7,6 +7,8 @@ import {
   ICoverageReport,
   IEndpointPattern,
 } from '../types/index.js';
+import path from 'path';
+import fs from 'fs';
 
 // Create a logger instance
 const log = logger('openapi:report-generator');
@@ -266,6 +268,13 @@ export function generateCoverageReport(
 
   // Write the report to file
   try {
+    // Ensure directory exists before writing
+    const directory = path.dirname(outputPath);
+    if (!existsSync(directory)) {
+      fs.mkdirSync(directory, { recursive: true });
+      log.info(`Created directory for report: ${directory}`);
+    }
+
     writeFileSync(outputPath, JSON.stringify(report, null, 2));
     log.info(`Coverage report saved to ${outputPath}`);
   } catch (err) {
