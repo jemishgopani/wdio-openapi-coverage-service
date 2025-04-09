@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OpenAPI Coverage Service Snapshots coverage report format should match snapshot 1`] = `
+{
+  "endpoints": {
+    "tested": [
+      "GET /users",
+      "GET /users/{id}",
+    ],
+    "untested": 5,
+  },
+  "extraEndpoints": [
+    "GET /users/1",
+  ],
+  "methodCoverage": {
+    "DELETE": {
+      "percentage": 0,
+      "tested": 0,
+      "total": 1,
+    },
+    "GET": {
+      "percentage": 66.67,
+      "tested": 2,
+      "total": 3,
+    },
+    "HEAD": {
+      "percentage": 0,
+      "tested": 0,
+      "total": 0,
+    },
+    "OPTIONS": {
+      "percentage": 0,
+      "tested": 0,
+      "total": 0,
+    },
+    "PATCH": {
+      "percentage": 0,
+      "tested": 0,
+      "total": 0,
+    },
+    "POST": {
+      "percentage": 0,
+      "tested": 0,
+      "total": 2,
+    },
+    "PUT": {
+      "percentage": 0,
+      "tested": 0,
+      "total": 1,
+    },
+  },
+  "summary": {
+    "coveragePercentage": 28.57,
+    "testedEndpoints": 2,
+    "totalEndpoints": 7,
+    "untestedEndpoints": 5,
+  },
+  "timestamp": "TIMESTAMP",
+}
+`;
+
+exports[`OpenAPI Coverage Service Snapshots path normalization should match snapshot for various URL patterns 1`] = `
+{
+  "/api/v1/users/123": "/api/v1/users/123",
+  "/consent/abc123/sign": "/consent/abc123/sign",
+  "/products": "/products",
+  "/products/123/variants/456": "/products/{productId}/variants/{variantId}",
+  "/products/abc/variants/xyz": "/products/{productId}/variants/{variantId}",
+  "/users": "/users",
+  "/users/123": "/users/{id}",
+  "/users/123/profile": "/users/123/profile",
+  "/users/123e4567-e89b-12d3-a456-426614174000": "/users/{id}",
+  "/users/456": "/users/{id}",
+  "/users/507f1f77bcf86cd799439011": "/users/{id}",
+  "/users/by-name/john": "/users/by-name/john",
+}
+`;

@@ -1,0 +1,6 @@
+node_modules/
+dist/
+coverage/
+.temp/
+api-coverage-report.json
+*.log 

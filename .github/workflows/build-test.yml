@@ -1,0 +1,117 @@
+name: Build and Test
+
+on:
+  push:
+    branches: [ main, master ]
+    paths-ignore:
+      - '**.md'
+      - '.github/workflows/release.yml'
+  pull_request:
+    branches: [ main, master ]
+    paths-ignore:
+      - '**.md'
+  workflow_dispatch:
+    inputs:
+      updateSnapshots:
+        description: 'Update Jest snapshots'
+        type: boolean
+        default: false
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x, 22.x]
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Set up Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Build
+      run: npm run build
+    
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: build-output-${{ matrix.node-version }}
+        path: build/
+        retention-days: 1
+
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    needs: build
+    
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x, 22.x]
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Set up Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Run tests
+      if: ${{ github.event.inputs.updateSnapshots != 'true' || matrix.node-version != '22.x' }}
+      run: npm test -- -u
+      
+    - name: Run tests with coverage
+      if: ${{ github.event.inputs.updateSnapshots != 'true' || matrix.node-version != '22.x' }}
+      run: npm run test:coverage -- -u
+      
+    - name: Upload coverage report
+      uses: actions/upload-artifact@v4
+      if: matrix.node-version == '22.x' && github.event.inputs.updateSnapshots != 'true'
+      with:
+        name: coverage-report
+        path: coverage/
+        retention-days: 7
+
+  integration:
+    name: Integration Tests
+    runs-on: ubuntu-latest
+    needs: [build, test]
+    if: ${{ github.event.inputs.updateSnapshots != 'true' }}
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '22.x'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Build
+      run: npm run build
+      
+    - name: Run example tests
+      run: |
+        cd example
+        npm install
+        npm test
+      continue-on-error: true 

@@ -1,0 +1,42 @@
+[
+  {
+    "pattern": "/users/(\\d+)",
+    "replace": "id"
+  },
+  {
+    "pattern": "/users/(\\d+)/posts",
+    "replace": "user_id/posts"
+  },
+  {
+    "pattern": "/posts/(\\d+)",
+    "replace": "id"
+  },
+  {
+    "pattern": "/posts/(\\d+)/comments",
+    "replace": "post_id/comments"
+  },
+  {
+    "pattern": "/comments/(\\d+)",
+    "replace": "id"
+  },
+  {
+    "pattern": "/albums/(\\d+)",
+    "replace": "id"
+  },
+  {
+    "pattern": "/albums/(\\d+)/photos",
+    "replace": "album_id/photos"
+  },
+  {
+    "pattern": "/users/(\\d+)/albums",
+    "replace": "user_id/albums"
+  },
+  {
+    "pattern": "/photos/(\\d+)",
+    "replace": "id"
+  },
+  {
+    "pattern": "/todos/(\\d+)",
+    "replace": "id"
+  }
+] 

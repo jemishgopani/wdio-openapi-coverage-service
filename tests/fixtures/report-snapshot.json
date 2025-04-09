@@ -1,0 +1,68 @@
+{
+  "summary": {
+    "totalEndpoints": 7,
+    "testedEndpoints": 2,
+    "untestedEndpoints": 5,
+    "coveragePercentage": 28.57
+  },
+  "methodCoverage": {
+    "GET": {
+      "total": 3,
+      "tested": 2,
+      "percentage": 66.67
+    },
+    "POST": {
+      "total": 2,
+      "tested": 0,
+      "percentage": 0
+    },
+    "PUT": {
+      "total": 1,
+      "tested": 0,
+      "percentage": 0
+    },
+    "DELETE": {
+      "total": 1,
+      "tested": 0,
+      "percentage": 0
+    },
+    "PATCH": {
+      "total": 0,
+      "tested": 0,
+      "percentage": 0
+    },
+    "OPTIONS": {
+      "total": 0,
+      "tested": 0,
+      "percentage": 0
+    },
+    "HEAD": {
+      "total": 0,
+      "tested": 0,
+      "percentage": 0
+    }
+  },
+  "serverErrorStats": {
+    "totalServerErrors": 0,
+    "statusCodeCounts": {},
+    "errorsByEndpoint": []
+  },
+  "endpoints": {
+    "tested": [
+      "GET /users",
+      "GET /users/{id}"
+    ],
+    "untested": [
+      "POST /users",
+      "PUT /users/{id}",
+      "DELETE /users/{id}",
+      "GET /products",
+      "POST /consent/{consent_id}/sign"
+    ]
+  },
+  "extraEndpoints": [
+    "GET /users/1"
+  ],
+  "serverErrors": {},
+  "timestamp": "2025-04-09T06:45:52.800Z"
+}

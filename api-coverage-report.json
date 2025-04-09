@@ -1,0 +1,61 @@
+{
+  "summary": {
+    "totalEndpoints": 2,
+    "testedEndpoints": 1,
+    "untestedEndpoints": 1,
+    "coveragePercentage": 50
+  },
+  "methodCoverage": {
+    "GET": {
+      "total": 1,
+      "tested": 1,
+      "percentage": 100
+    },
+    "POST": {
+      "total": 1,
+      "tested": 0,
+      "percentage": 0
+    },
+    "PUT": {
+      "total": 0,
+      "tested": 0,
+      "percentage": 0
+    },
+    "DELETE": {
+      "total": 0,
+      "tested": 0,
+      "percentage": 0
+    },
+    "PATCH": {
+      "total": 0,
+      "tested": 0,
+      "percentage": 0
+    },
+    "OPTIONS": {
+      "total": 0,
+      "tested": 0,
+      "percentage": 0
+    },
+    "HEAD": {
+      "total": 0,
+      "tested": 0,
+      "percentage": 0
+    }
+  },
+  "serverErrorStats": {
+    "totalServerErrors": 0,
+    "statusCodeCounts": {},
+    "errorsByEndpoint": []
+  },
+  "endpoints": {
+    "tested": [
+      "GET /users"
+    ],
+    "untested": [
+      "POST /users"
+    ]
+  },
+  "extraEndpoints": [],
+  "serverErrors": {},
+  "timestamp": "2025-04-09T06:45:52.935Z"
+}

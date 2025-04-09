@@ -1,0 +1,9 @@
+node_modules/
+dist/
+coverage/
+.temp/
+*.json
+*.yml
+*.yaml
+*.md
+*.log 
